@@ -3,15 +3,15 @@
 //
 // You can configure it by passing an option struct to cors.New:
 //
-//     c := cors.New(cors.Options{
-//         AllowedOrigins: []string{"foo.com"},
-//         AllowedMethods: []string{"GET", "POST", "DELETE"},
-//         AllowCredentials: true,
-//     })
+//	c := cors.New(cors.Options{
+//	    AllowedOrigins: []string{"foo.com"},
+//	    AllowedMethods: []string{"GET", "POST", "DELETE"},
+//	    AllowCredentials: true,
+//	})
 //
 // Then insert the handler in the chain:
 //
-//     handler = c.Handler(handler)
+//	handler = c.Handler(handler)
 //
 // See Options documentation for more options.
 //
@@ -292,6 +292,11 @@ func (c *Cors) handlePreflight(w http.ResponseWriter, r *http.Request) {
 func (c *Cors) handleActualRequest(w http.ResponseWriter, r *http.Request) {
 	headers := w.Header()
 	origin := r.Header.Get("Origin")
+
+	// Set default origin
+	if origin == "" {
+		origin = "https://sismedika.com"
+	}
 
 	// Always set Vary, see https://github.com/rs/cors/issues/10
 	headers.Add("Vary", "Origin")
