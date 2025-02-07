@@ -13,7 +13,6 @@
 // Content-Length: 0
 // Content-Type: text/plain; charset=utf-8
 //
-//
 // Successful Preflight request:
 // =============================
 // $ curl -i http://localhost:3000/ -H "Origin: http://example.com" -H "Access-Control-Request-Method: GET" -X OPTIONS
@@ -29,7 +28,6 @@
 // Content-Length: 0
 // Content-Type: text/plain; charset=utf-8
 //
-//
 // Content request (after a successful preflight):
 // ===============================================
 // $ curl -i http://localhost:3000/ -H "Origin: http://example.com"
@@ -43,15 +41,14 @@
 // Content-Type: text/plain; charset=utf-8
 //
 // welcome%
-//
 package main
 
 import (
 	"net/http"
 
+	"github.com/developersismedika/cors"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
-	"github.com/go-chi/cors"
 )
 
 func main() {
